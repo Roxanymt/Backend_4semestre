@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block principal %}
+<h2>Listado de Empleados</h2>
+
+<div class="container">
+    <table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <td>Rut</td>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>Edad</td>
+            <td>Telefono</td>
+            <td>Dirección</td>
+            <td>Tipo</td>
+            <td>Opciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aux in lista %}
+            <tr>
+                <td>{{ aux.rut}}</td>
+                <td>{{ aux.nombre}}</td>
+                <td>{{ aux.apellido}}</td>
+                <td>{{ aux.edad}}</td>
+                <td>{{ aux.telefono}}</td>
+                <td>{{ aux.direccion}}</td>
+                <td>{{ aux.tipo}}</td>
+                <td class="text-center">
+                    <a href="{% url 'updateempleado' aux.id %}" class="btn btn-info">Modificar</a>
+                    <a onclick="confirmDelete({{ aux.id }})" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block articulo %}Contacto{% endblock %}

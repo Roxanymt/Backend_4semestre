@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block principal %}
+<h2>Actualización datos de empleado</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button class="btn btn-success" type="submit">Modificar</button>
+</form>
+
+{% endblock %}
