@@ -15,20 +15,22 @@
             <td>Telefono</td>
             <td>Dirección</td>
             <td>Tipo</td>
+            <td>Fecha Nacimiento</td>
             <td>Foto</td>
             <td>Opciones</td>
         </tr>
     </thead>
     <tbody>
-        {% for aux in lista %}
+        {% for aux in listaEmpleados %}
             <tr>
-                <td>{{ aux.rut}}</td>
-                <td>{{ aux.nombre}}</td>
-                <td>{{ aux.apellido}}</td>
-                <td>{{ aux.edad}}</td>
-                <td>{{ aux.telefono}}</td>
-                <td>{{ aux.direccion}}</td>
-                <td>{{ aux.tipo}}</td>
+                <td>{{ aux.rut }}</td>
+                <td>{{ aux.nombre }}</td>
+                <td>{{ aux.apellido }}</td>
+                <td>{{ aux.edad }}</td>
+                <td>{{ aux.telefono }}</td>
+                <td>{{ aux.direccion }}</td>
+                <td>{{ aux.tipo.tipo }}</td>
+                <td>{{ aux.nacimiento }}</td>
                 <td>
                     {% if aux.foto %} 
                     <img src=" {{ aux.fot.url }} " alt="" width="100" height="100" >

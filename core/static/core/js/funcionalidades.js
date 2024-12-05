@@ -1,4 +1,3 @@
-
 function confirmDelete(id){
     Swal.fire({
         title: "¿Está seguro?",
@@ -14,7 +13,7 @@ function confirmDelete(id){
             title: "¡Eliminado!",
             text: "El empleado ha sido eliminado.",
             icon: "success"
-            }).then(()=>{
+            }).then(function(){
                 window.location.href = "/deleteempleado/"+id+"/";
             });
         }

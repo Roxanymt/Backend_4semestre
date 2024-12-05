@@ -32,7 +32,7 @@
 	<div id="colorlib-page">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-			<h1 id="colorlib-logo"><a href="index.html">bonnie<span>.</span></a></h1>
+			<h1 id="colorlib-logo"><a href="{% url 'index' %}">bonnie<span>.</span><img src="{% static 'core/images/profile.png' %}"  class="img-fluid"></a></h1>
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
 					<li class="colorlib-active"><a href="{% url 'index' %}">Home</a></li>
@@ -41,14 +41,14 @@
 					<li><a href="{% url 'addempleado' %}">Agregar Empleado</a></li>
 					<li><a href="{% url 'listempleados' %}">Listar Empleados</a></li>
 				</ul>
+				<div>
+					<p>
+						Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script> <br>
+						Made with <i class="icon-heart" aria-hidden="true"></i> by Roxany
+					</p>
+				</div>
 			</nav>
-			<div class="colorlib-footer">
-				<p>
-					Copyright &copy;
-					<script>document.write(new Date().getFullYear());</script> <br>
-					Made with <i class="icon-heart" aria-hidden="true"></i> by Roxany
-				</p>
-			</div>
 		</aside> <!-- END COLORLIB-ASIDE -->
 		<div id="colorlib-main">
 			<div class="hero-wrap js-fullheight" data-stellar-background-ratio="0.5">

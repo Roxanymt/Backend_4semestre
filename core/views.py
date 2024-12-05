@@ -2,7 +2,39 @@ from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 
-# Create your views here.
+#API
+from rest_framework import viewsets, filters
+from .serializers import *
+from rest_framework.renderers import JSONRenderer
+from django_filters.rest_framework import DjangoFilterBackend
+import requests
+
+#VIEWSET PARA TRABAJAR CON LAS API (GET, PUT, POST, DELETE)
+class EmpleadoViewSet(viewsets.ModelViewSet):
+    queryset = Empleado.objects.all()
+    serializer_class = EmpleadoSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['tipo','edad']
+    search_fields = ['nombre','rut']
+    renderer_classes = [JSONRenderer]
+
+class TipoEmpleadoViewSet(viewsets.ModelViewSet):
+    queryset = TipoEmpleado.objects.all()
+    serializer_class = EmpleadoSerializer
+    renderer_classes = [JSONRenderer]
+
+def empleadosapi(request):
+    response = requests.get("http://127.0.0.1:8000/api/empleados/")
+
+    if response.status_code == 200:
+        empleados = response.json()
+        datos = {'listaEmpleados' : empleados}
+    else:
+        empleados = []
+
+    return render(request, 'core/empleados/empleadosapi.html',datos)
+
+# PAGINAS
 def index(request):
     return render(request,'core/index.html')
 
