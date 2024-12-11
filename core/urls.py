@@ -12,10 +12,11 @@ urlpatterns = [
     path('empleadosapi/', empleadosapi, name = "empleadosapi"),
     path('', index, name = "index"),
     path('contacto/', contacto, name = "contacto"),
-    path('quienessomos/', quienessomos, name = "quienessomos"),
+    path('sobremi/', sobremi, name = "sobremi"),
     #CRUD empleado
     path('addempleado/', addempleado, name = "addempleado"),
     path('listempleados/', listempleados, name = "listempleados"),
     path('updateempleado/<id>/', updateempleado, name = "updateempleado"),
     path('deleteempleado/<id>/', deleteempleado, name = "deleteempleado"),
+    path('registrar', registrar, name = "registrar"),
 ]

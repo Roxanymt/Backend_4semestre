@@ -2,49 +2,54 @@
 {% load static %}
 
 {% block principal %}
-<h2>Listado de Empleados</h2>
-
-<div class="container">
-    <table class="table table-striped">
-    <thead>
-        <tr>
-            <td>Rut</td>
-            <td>Nombre</td>
-            <td>Apellido</td>
-            <td>Edad</td>
-            <td>Telefono</td>
-            <td>Dirección</td>
-            <td>Tipo</td>
-            <td>Foto</td>
-            <td>Opciones</td>
-        </tr>
-    </thead>
-    <tbody>
-        {% for aux in lista %}
-            <tr>
-                <td>{{ aux.rut}}</td>
-                <td>{{ aux.nombre}}</td>
-                <td>{{ aux.apellido}}</td>
-                <td>{{ aux.edad}}</td>
-                <td>{{ aux.telefono}}</td>
-                <td>{{ aux.direccion}}</td>
-                <td>{{ aux.tipo}}</td>
-                <td>
-                    {% if aux.foto %} 
-                    <img src=" {{ aux.fot.url }} " alt="" width="100" height="100" >
-                    {% else %}
-                    <img src="{% static 'core/images/iconprofile.png' %}" width="100" height="100">
-                    {% endif %}
-                </td>
-                <td class="text-center">
-                    <a href="{% url 'updateempleado' aux.id %}" class="btn btn-info">Modificar</a>
-                    <a onclick="confirmDelete({{ aux.id }})" class="btn btn-danger">Eliminar</a>
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
-    </table>
+<div class="mt-5 container">
+    <div class="mt-5 container text-center">
+        <h3>Listado de empleados registrados</h3>
+    </div>
+        {% if perms.core.view_empleado %}
+        <table class="mt-5 table">
+            <thead>
+                <tr>
+                    <th>Rut</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Telefono</th>
+                    <th>Dirección</th>
+                    <th>Tipo</th>
+                    <th>Foto</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for aux in lista %}
+                    <tr>
+                        <th scope="row">{{ aux.rut}}</th>
+                        <td>{{ aux.nombre}}</td>
+                        <td>{{ aux.apellido}}</td>
+                        <td>{{ aux.edad}}</td>
+                        <td>{{ aux.telefono}}</td>
+                        <td>{{ aux.direccion}}</td>
+                        <td>{{ aux.tipo}}</td>
+                        <td>
+                            {% if aux.foto %} 
+                                <img src=" {{ aux.foto.url }} " alt="foto de perfil" width="100" height="100" >
+                            {% else %}
+                                <img src="{% static 'core/images/iconprofile.png' %}" width="100" height="100">
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            {% if perms.core.change_empleado %}
+                                <a href="{% url 'updateempleado' aux.id %}" class="btn btn-info">Modificar</a>
+                            {% endif %}
+                            {% if perms.core.delete_empleado %}
+                                <a onclick="confirmDelete({{ aux.id }})" class="btn btn-warning">Eliminar</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 </div>
 {% endblock %}
-
-{% block articulo %}Contacto{% endblock %}

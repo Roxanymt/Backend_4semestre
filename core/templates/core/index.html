@@ -2,8 +2,116 @@
 {% load static %}
 
 {% block principal %}
-<div class="container">
-    <h1>¡Estoy en Index!</h1>
+<div class="hero-wrap js-fullheight" style="background-image: url({% static 'core/images/bg_1.jpg' %});" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="js-fullheight d-flex justify-content-center align-items-center">
+        <div class="col-md-8 text text-center">
+            <div class="img mb-4" style="background-image: url({% static 'core/images/profile.png' %});" ></div>
+            <div class="desc">
+                <h2 class="subheading">Hola soy</h2>
+                <h1 class="mb-4">Roxany Montenegro</h1>
+                <p class="mb-4">Este es un proyecto de la asignatura Back End de IV Semestre, en donde se agregan distintas funcionalidades. La plantilla es propiedad de Colorlib. </p>
+                <p><a href="{% url 'sobremi' %}" class="btn-custom">Más sobre mí <span class="ion-ios-arrow-forward"></span></a></p>
+            </div>
+        </div>
+    </div>
 </div>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2 class="mb-4">Funcionalidades</h2>
+            <p>Aquí se encontrarán las redirecciones a las funcionalidades aprendidas en el semestre.</p>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="blog-entry ftco-animate">
+                <a href="{% url 'addempleado' %}" class="img img-2" style="background-image: url({% static 'core/images/image_1.jpg' %});"></a>
+                <div class="text text-2 pt-2 mt-3">
+                    <span class="category mb-3 d-block"><a href="#">Create</a></span>
+                    <h3 class="mb-4"><a href="{% url 'addempleado' %}">Agregar Empleados</a></h3>
+                    <p class="mb-4">En este apartado se pueden agregar empleados a la base de datos mediante un formulario.</p>
+                    <div class="author mb-4 d-flex align-items-center">
+                    <a href="#" class="img" style="background-image: url({% static 'core/images/profile.png' %});"></a>
+                    <div class="ml-3 info">
+                    <span>Realizado por</span>
+                    <h3><a href="#">Roxany Montenegro</a>, <span>IV Semestre, 2024</span></h3>
+                    </div>
+                </div>
+                <div class="meta-wrap align-items-center">
+                    <div class="half order-md-last">
+                        <p class="meta">
+                            <span><i class="icon-heart"></i>3</span>
+                            <span><i class="icon-eye"></i>100</span>
+                            <span><i class="icon-comment"></i>5</span>
+                        </p>
+                    </div>
+                    <div class="half">
+                        <p><a href="{% url 'addempleado' %}" class="btn py-2">Continuar Leyendo <span class="ion-ios-arrow-forward"></span></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="blog-entry ftco-animate">
+            <a href="{% url 'listempleados' %}" class="img img-2" style="background-image: url({% static 'core/images/image_2.jpg' %});"></a>
+            <div class="text text-2 pt-2 mt-3">
+                <span class="category mb-3 d-block"><a href="#">Read</a></span>
+                <h3 class="mb-4"><a href="{% url 'listempleados' %}">Listar Empleados</a></h3>
+                <p class="mb-4">En esta sección se puede visualizar la lista de los empleados registrados en la base de datos, antes de acceder el usuario debe estar registrado</p>
+                <div class="author mb-4 d-flex align-items-center">
+                    <a href="#" class="img" style="background-image: url({% static 'core/images/profile.png' %});"></a>
+                    <div class="ml-3 info">
+                        <span>Realizado por</span>
+                        <h3><a href="#">Roxany Montenegro</a>, <span>IV Semestre, 2024</span></h3>
+                    </div>
+                </div>
+                <div class="meta-wrap align-items-center">
+                    <div class="half order-md-last">
+                        <p class="meta">
+                            <span><i class="icon-heart"></i>3</span>
+                            <span><i class="icon-eye"></i>100</span>
+                            <span><i class="icon-comment"></i>5</span>
+                        </p>
+                    </div>
+                    <div class="half">
+                        <p><a href="{% url 'listempleados' %}" class="btn py-2">Continue Reading <span class="ion-ios-arrow-forward"></span></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="blog-entry ftco-animate">
+                <a href="#" class="img img-2" style="background-image: url({% static 'core/images/image_3.jpg' %});"></a>
+                <div class="text text-2 pt-2 mt-3">
+                    <span class="category mb-3 d-block"><a href="#">Fashion</a></span>
+                    <h3 class="mb-4"><a href="#">Awesome Fashion Trend in For Summer</a></h3>
+                    <p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
+                    <div class="author mb-4 d-flex align-items-center">
+                        <a href="#" class="img" style="background-image: url({% static 'core/images/person_3.jpg' %});"></a>
+                        <div class="ml-3 info">
+                            <span>Written by</span>
+                            <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
+                        </div>
+                    </div>
+                    <div class="meta-wrap align-items-center">
+                        <div class="half order-md-last">
+                            <p class="meta">
+                                <span><i class="icon-heart"></i>3</span>
+                                <span><i class="icon-eye"></i>100</span>
+                                <span><i class="icon-comment"></i>5</span>
+                            </p>
+                        </div>
+                        <div class="half">
+                            <p><a href="#" class="btn py-2">Continue Reading <span class="ion-ios-arrow-forward"></span></a></p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
 {% block articulo %}Index{% endblock %}

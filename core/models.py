@@ -15,7 +15,9 @@ class Empleado(models.Model):
     telefono = models.CharField(max_length = 12)
     direccion = models.CharField(max_length = 60)
     tipo = models.ForeignKey(TipoEmpleado, on_delete = models.CASCADE)
-    
+    nacimiento = models.DateField(null = True, blank = True)
+    foto = models.ImageField(blank=True, null= True)
+
     def __str__(self):
         return self.rut
     

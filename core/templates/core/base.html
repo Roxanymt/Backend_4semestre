@@ -29,95 +29,82 @@
     <link rel="stylesheet" href="{% static 'core/css/style.cs' %}s">
 	</head>
 	<body>
-	<div id="colorlib-page">
-		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-		<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-			<h1 id="colorlib-logo"><a href="{% url 'index' %}">bonnie<span>.</span><img src="{% static 'core/images/profile.png' %}"  class="img-fluid"></a></h1>
-			<nav id="colorlib-main-menu" role="navigation">
-				<ul>
-					<li class="colorlib-active"><a href="{% url 'index' %}">Home</a></li>
-					<li><a href="{% url 'quienessomos' %}">Quienes somos</a></li>
-					<li><a href="{% url 'contacto' %}">Contacto</a></li>
-					<li><a href="{% url 'addempleado' %}">Agregar Empleado</a></li>
-					<li><a href="{% url 'listempleados' %}">Listar Empleados</a></li>
-				</ul>
-				<div>
-					<p>
-						Copyright &copy;
-						<script>document.write(new Date().getFullYear());</script> <br>
-						Made with <i class="icon-heart" aria-hidden="true"></i> by Roxany
-					</p>
+		<div id="colorlib-page">
+			<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"></a>
+			<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
+				<h1 id="colorlib-logo"><a href="{% url 'index' %}">bonnie<span>.</span></a></h1>
+				<nav id="colorlib-main-menu" role="navigation">
+					{% if user.is_authenticated %}
+						<p>Bienvenido @{{user.username}}</p>
+					{% endif %}
+					<ul>
+						<li class="colorlib-active"><a href="{% url 'index' %}">Home</a></li>
+
+						<li><a href="{% url 'addempleado' %}">Agregar Empleados</a></li>
+						<li><a href="{% url 'listempleados' %}">Listar Empleados</a></li>
+						<li><a href="{% url 'sobremi' %}">Sobre mi</a></li>
+						<li><a href="{% url 'contacto' %}">Contacto</a></li>
+						{% if user.is_authenticated %}
+							<li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+						{% else %}
+							<li><a href="{% url 'login' %}">Login</a></li>
+						{% endif %}
+					</ul>
+				</nav>
+	
+				<div class="colorlib-footer">
+					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a><p>Plantilla modificada por <a href="{% url 'sobremi' %}">Roxany</a></p>
+					<ul>
+						<li><a href="https://github.com/Roxanymt""><i class="icon-github"></i></a></li>
+						<li><a href="https://www.linkedin.com/in/roxany-m-4587b1144/"><i class="icon-linkedin"></i></a></li>
+					</ul>
 				</div>
-			</nav>
-		</aside> <!-- END COLORLIB-ASIDE -->
-		<div id="colorlib-main">
-			<div class="hero-wrap js-fullheight" data-stellar-background-ratio="0.5">
-				<div>      
-					{% block principal %} 
-					{% endblock %}
-				</div>
-			</div>
-			<section class="ftco-section">
-				<div class="container">
-					<div class="row justify-content-center mb-5 pb-2">
-					<div class="col-md-7 heading-section text-center ftco-animate">
-					{% block articulo %}
-					{% endblock %}
-				</div>
-        </div>
-		<footer class="ftco-footer ftco-bg-dark ftco-section">
-			<div class="container px-md-5">
-				<div class="row mb-5">
-					<div class="col-md">
-						<div class="ftco-footer-widget mb-4 ml-md-4">
-							<h2 class="ftco-heading-2">Category</h2>
-							<ul class="list-unstyled categories">
-								<li><a href="#">Photography <span>(6)</span></a></li>
-								<li><a href="#">Fashion <span>(8)</span></a></li>
-								<li><a href="#">Technology <span>(2)</span></a></li>
-								<li><a href="#">Travel <span>(2)</span></a></li>
-							</ul>
+			</aside> <!-- END COLORLIB-ASIDE -->
+			<div id="colorlib-main">
+				{% block principal %} 
+				{% endblock %}
+				<footer class="ftco-footer ftco-bg-dark ftco-section">
+					<div class="container px-md-5">
+						<div class="row mb-5">
+							<div class="col-md">
+								<div class="ftco-footer-widget mb-4 ml-md-4">
+									<h2 class="ftco-heading-2">Categorías</h2>
+									<ul class="list-unstyled categories">
+										<li><a href="#">Create <span>(1)</span></a></li>
+										<li><a href="#">Read <span>(1)</span></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md">
+								<div class="ftco-footer-widget mb-4">
+									<h2 class="ftco-heading-2">Archivos</h2>
+									<ul class="list-unstyled categories">
+										<li><a href="#">IV Semestre 2024 <span>(2)</span></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md">
+								<div class="ftco-footer-widget mb-4">
+									<h2 class="ftco-heading-2">¿Tienes alguna consulta?</h2>
+									<div class="block-23 mb-3">
+										<ul>
+											<li><span class="icon icon-map-marker"></span><span class="text">Santiago, Chile</span></li>
+											<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+											<li><a href="#"><span class="icon icon-envelope"></span><span class="text">roxanymontenegro@gmail.com</span></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div class="col-md">
-						<div class="ftco-footer-widget mb-4">
-							<h2 class="ftco-heading-2">Archives</h2>
-							<ul class="list-unstyled categories">
-								<li><a href="#">October 2018 <span>(6)</span></a></li>
-								<li><a href="#">September 2018 <span>(6)</span></a></li>
-								<li><a href="#">August 2018 <span>(8)</span></a></li>
-								<li><a href="#">July 2018 <span>(2)</span></a></li>
-								<li><a href="#">June 2018 <span>(7)</span></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md">
-						<div class="ftco-footer-widget mb-4">
-							<h2 class="ftco-heading-2">Have a Questions?</h2>
-							<div class="block-23 mb-3">
-								<ul>
-									<li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-									<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-									<li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-								</ul>
+						<div class="row">
+							<div class="col-md-12">
+								<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> Copyright &copy;<script>document.	write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" 	aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> <!-- Link back to Colorlib can't be 	removed. Template is licensed under CC BY 3.0. -->| Plantilla modificada por Roxany</p>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<p>
-							Copyright &copy;
-							<script>document.write(new Date().getFullYear());</script>
-							Made with <i class="icon-heart" aria-hidden="true"></i> by Roxany
-						</p>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</div>
-	</div>
-
+				</footer>
+			</div><!-- END COLORLIB-MAIN -->
+		</div><!-- END COLORLIB-PAGE -->
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 

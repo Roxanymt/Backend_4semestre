@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block principal %}
+<div class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url({% static 'core/images/bg_4.jpg' %});" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="js-fullheight d-flex justify-content-center align-items-center">
+        <div class="col-md-8 text text-center">
+            <div class="img mb-4" style="background-image: url({% static 'core/images/profile.png' %});"></div>
+            <div class="desc">
+                <h2 class="subheading">Hola soy</h2>
+                <h1 class="mb-4">Roxany Montenegro</h1>
+                <p class="mb-4">Estudiante de la carraera Analista Programador de INACAP. El blog tiene de nombre "Bonnie" en honor a mi querida mascota <i class="icon-heart" aria-hidden="true"></i></p>
+                <ul class="ftco-social mt-3">
+                    <li class="ftco-animate"><a href="https://www.linkedin.com/in/roxany-m-4587b1144/"><span class="icon-linkedin"></span></a></li>
+                    <li class="ftco-animate"><a href="https://github.com/Roxanymt"><span class="icon-github"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

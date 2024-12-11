@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 
+#AUTH
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+
 #API
 from rest_framework import viewsets, filters
 from .serializers import *
@@ -41,8 +45,8 @@ def index(request):
 def contacto(request):
     return render(request,'core/contacto.html')
 
-def quienessomos(request):
-    return render(request, 'core/quienessomos.html')
+def sobremi(request):
+    return render(request, 'core/sobremi.html')
 
 #CRUD EMPLEADO
 def addempleado(request):
@@ -50,7 +54,7 @@ def addempleado(request):
     datos = { 'form' : EmpleadoForm() }
 
     if request.method == 'POST':
-        formulario = EmpleadoForm(request.POST)
+        formulario = EmpleadoForm(request.POST, files=request.FILES)
         if formulario.is_valid():
             formulario.save();
             datos['msj'] = "Empleado guardado correctamente"
@@ -71,7 +75,7 @@ def updateempleado(request, id):
     datos = { 'form' : EmpleadoForm( instance = empleado ) }
 
     if request.method == 'POST':
-        formulario = EmpleadoForm(data = request.POST, instance = empleado)
+        formulario = EmpleadoForm(data = request.POST, instance = empleado, files=request.FILES)
         if formulario.is_valid():
             formulario.save();
             datos['msj'] = "Empleado actualizado correctamente!"
@@ -84,4 +88,20 @@ def deleteempleado(request, id):
     empleado.delete()
 
     return redirect(to="listempleados")
+
+#VISTA DE REGISTRO
+def registrar(request):
+    data = {'form': CustomUserCreationForm() }
+
+    if request.method == 'POST':
+        formulario = CustomUserCreationForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            usuario = authenticate(username=formulario.cleaned_data["username"], password = formulario.cleaned_data["password1"])
+            login(request,usuario)
+            return redirect(to='index')
+        data['form'] = formulario
+    
+    return render(request, 'registration/register.html', data)
+
 

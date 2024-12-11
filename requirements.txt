@@ -1,5 +1,6 @@
 pillow  
 djangorestframework
 django-filter
+django-bootstrap5
 
 #pip install -r requirements.txt
